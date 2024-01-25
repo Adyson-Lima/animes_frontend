@@ -22,6 +22,16 @@ export default function Animes(){
     }
   }
 
+  // delete, apaga um registro na api
+  async function deleteAnime(id){
+    try {
+      await api.delete(`api/v1/animes/${id}`,{});
+      setAnimes(my_animes.filter(anime => anime.id !== id));
+    } catch (error) {
+      alert('erro ao excluir');      
+    }
+  }
+
   return(
 
     <div data-testid="mycard" className="card border-primary" style={{marginTop: '20px'}} >
@@ -55,7 +65,8 @@ export default function Animes(){
                   onClick={() => updateAnime(anime.id)}>Editar</button>
 
                   <button data-testid="mybtn2" type="button"
-                  className="btn btn-outline-danger" style={{margin: '2px'}}>Excluir</button>
+                  className="btn btn-outline-danger" style={{margin: '2px'}}
+                  onClick={() => deleteAnime(anime.id)}>Excluir</button>
 
                 </td>
             </tr>
