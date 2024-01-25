@@ -34,7 +34,9 @@ export default function Animes(){
                   <button data-testid="mybtn1" type="button"
                   className="btn btn-outline-info" style={{margin: '2px'}}>Editar</button>
 
-                  
+                  <button data-testid="mybtn2" type="button"
+                  className="btn btn-outline-danger" style={{margin: '2px'}}>Excluir</button>
+
                 </td>
             </tr>
           </tbody>
