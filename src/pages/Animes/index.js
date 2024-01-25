@@ -1,8 +1,17 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-// import api from '../../services/api';
+import api from '../../services/api';
 
 export default function Animes(){
+
+  const [my_animes, setAnimes] = useState([]);
+  const navigate = useNavigate();
+
+  // read, busca todos os registros na api
+  useEffect(() => {
+    api.get('api/v1/animes',{})
+    .then(response => {setAnimes(response.data)})
+  }, []);
 
   return(
 
@@ -18,17 +27,18 @@ export default function Animes(){
         <table data-testid="mytable" className="table table-hover">
           <thead>
             <tr>
-              <th scope="col">##</th>
-              <th scope="col">##</th>
-              <th scope="col">##</th>
-              <th scope="col">##</th>
+              <th scope="col">ID</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Idade</th>
+              <th scope="col">Ações</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row"></th>
-                <td></td>
-                <td></td>
+            {my_animes.map(anime => (
+            <tr key={anime.id}>
+                <th scope="row">{anime.id}</th>
+                <td>{anime.name}</td>
+                <td>{anime.age}</td>
                 <td>
 
                   <button data-testid="mybtn1" type="button"
@@ -39,6 +49,8 @@ export default function Animes(){
 
                 </td>
             </tr>
+            ))}
+            
           </tbody>
         </table>
 
