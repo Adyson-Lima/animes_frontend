@@ -24,6 +24,8 @@ export default function NewUpdate(){
             placeholder="###"></input>
           </div>
 
+          
+
         </form>
 
       </div>
