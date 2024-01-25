@@ -1,7 +1,8 @@
+import AnimesRouter from "./routes";
 
 function App() {
   return (
-    <></>
+    <AnimesRouter/>
   );
 }
 
